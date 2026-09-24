@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#07121d">
   <title>Hengbing | Ice Packs & Cold Chain Packaging</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2307121d'/%3E%3Cpath d='M32 12v40M15 22l34 20M49 22 15 42M32 12l-5 7m5-7 5 7M32 52l-5-7m5 7 5-7M15 22l9 1m-9-1 4-8M49 42l-9-1m9 1-4 8M49 22l-9 1m9-1-4-8M15 42l9-1m-9 1 4 8' stroke='%235edfff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=3">
+  <link rel="stylesheet" href="./styles.css?v=4">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -74,39 +74,75 @@
         </div>
       </div>
 
-      <div class="network-stage" aria-label="Illustrative enterprise relationship network centered on the Hengbing factory in Longgang">
-        <div class="network-globe" aria-hidden="true">
-          <span class="globe-lat globe-lat-a"></span>
-          <span class="globe-lat globe-lat-b"></span>
-          <span class="globe-long globe-long-a"></span>
-          <span class="globe-long globe-long-b"></span>
+      <div class="network-stage" aria-label="Real geographic world map focused on China, showing the Hengbing factory and enterprise relationship cities">
+        <div class="map-toolbar" aria-label="Map view">
+          <div><span>Geographic network</span><strong>China &amp; East Asia</strong></div>
+          <div class="map-view-buttons">
+            <button type="button" data-map-view="china" aria-pressed="true">China focus</button>
+            <button type="button" data-map-view="world" aria-pressed="false">World view</button>
+          </div>
         </div>
-        <svg class="network-routes" viewBox="0 0 1000 680" aria-hidden="true" preserveAspectRatio="none">
-          <path class="route route-signed" d="M500 340 Q660 70 820 150"></path>
-          <path class="route route-signed route-delay-1" d="M500 340 Q705 385 835 510"></path>
-          <path class="route route-current route-delay-2" d="M500 340 Q315 365 150 500"></path>
-          <path class="route route-previous route-delay-3" d="M500 340 Q355 95 180 130"></path>
-        </svg>
 
-        <div class="network-node network-node-center">
-          <span class="node-pulse" aria-hidden="true"></span>
-          <small>Manufacturing hub</small>
-          <strong>Hengbing Factory</strong>
-          <span>Longgang · Wenzhou</span>
+        <div class="map-canvas">
+          <svg id="enterprise-map" class="enterprise-map" viewBox="735 70 445 262" data-china-view="735 70 445 262" data-world-view="0 0 1200 600" role="img" aria-labelledby="map-title map-description">
+            <title id="map-title">Hengbing enterprise relationship map</title>
+            <desc id="map-description">A real world map focused on China. The Hengbing factory in Longgang, Wenzhou is linked to enterprise relationship locations in Beijing and Shanghai.</desc>
+            <image href="./assets/world-map.svg?v=1" x="0" y="0" width="1200" height="600"></image>
+
+            <g class="geo-routes" aria-hidden="true">
+              <path class="geo-route geo-route-signed" d="M1001.83 208.07 Q1042 166 988 167"></path>
+              <path class="geo-route geo-route-current" d="M1001.83 208.07 Q947 188 988 167"></path>
+              <path class="geo-route geo-route-signed route-delay-1" d="M1001.83 208.07 Q1030 188 1004.9 195.9"></path>
+              <path class="geo-route geo-route-previous route-delay-2" d="M1001.83 208.07 Q982 190 1004.9 195.9"></path>
+            </g>
+
+            <g class="geo-city geo-beijing" aria-label="Beijing: JD and Meituan">
+              <circle class="city-halo" cx="988" cy="167" r="7"></circle>
+              <circle class="city-point" cx="988" cy="167" r="2.4"></circle>
+              <path class="callout-line" d="M985 163 L968 151"></path>
+              <g class="map-callout" transform="translate(825 97)">
+                <rect width="145" height="58" rx="8"></rect>
+                <text class="map-place" x="10" y="16">BEIJING</text>
+                <text x="10" y="33">JD · Signed 2026</text>
+                <text class="map-muted" x="10" y="48">Meituan · Current</text>
+              </g>
+            </g>
+
+            <g class="geo-city geo-shanghai" aria-label="Shanghai: Hema and Century Hualian">
+              <circle class="city-halo" cx="1004.9" cy="195.9" r="7"></circle>
+              <circle class="city-point" cx="1004.9" cy="195.9" r="2.4"></circle>
+              <path class="callout-line" d="M1009 199 L1032 222"></path>
+              <g class="map-callout" transform="translate(1030 221)">
+                <rect width="142" height="62" rx="8"></rect>
+                <text class="map-place" x="10" y="16">SHANGHAI</text>
+                <text x="10" y="33">Hema · Signed 2027</text>
+                <text class="map-muted" x="10" y="49">Century Hualian · Previous</text>
+              </g>
+            </g>
+
+            <g class="geo-city geo-factory" aria-label="Hengbing Factory in Longgang, Wenzhou">
+              <circle class="factory-pulse" cx="1001.83" cy="208.07" r="9"></circle>
+              <circle class="factory-point" cx="1001.83" cy="208.07" r="3.2"></circle>
+              <path class="callout-line factory-line" d="M997 212 L970 231"></path>
+              <g class="map-callout factory-callout" transform="translate(842 226)">
+                <rect width="132" height="48" rx="8"></rect>
+                <text class="map-place" x="10" y="16">LONGGANG · WENZHOU</text>
+                <text x="10" y="34">Hengbing Factory</text>
+              </g>
+            </g>
+          </svg>
+
+          <div class="map-legend" aria-label="Map legend">
+            <span><i class="legend-factory"></i>Manufacturing hub</span>
+            <span><i class="legend-signed"></i>Signed contract</span>
+            <span><i class="legend-current"></i>Current cooperation</span>
+            <span><i class="legend-previous"></i>Previous cooperation</span>
+          </div>
         </div>
-        <div class="network-node network-node-jd">
-          <small>Signed · 2026</small><strong>JD</strong><span>Enterprise contract</span>
+        <div class="map-caption">
+          <span>City-level locations · Relationship lines are illustrative, not shipment routes</span>
+          <span>Boundary data: Natural Earth 1:110m</span>
         </div>
-        <div class="network-node network-node-hema">
-          <small>Signed · 2027</small><strong>Hema / Freshippo</strong><span>Enterprise contract</span>
-        </div>
-        <div class="network-node network-node-meituan">
-          <small>Current</small><strong>Meituan</strong><span>Cooperation</span>
-        </div>
-        <div class="network-node network-node-century">
-          <small>Previous</small><strong>Century Hualian</strong><span>Cooperation</span>
-        </div>
-        <p class="network-disclaimer">Relationship network · Connections are illustrative, not shipment routes</p>
       </div>
 
       <div class="network-stats" aria-label="Manufacturing scale">

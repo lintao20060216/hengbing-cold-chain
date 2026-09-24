@@ -20,6 +20,18 @@ document.querySelectorAll("[data-product]").forEach((link) => {
   });
 });
 
+const enterpriseMap = document.querySelector("#enterprise-map");
+document.querySelectorAll("[data-map-view]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const view = button.dataset.mapView;
+    const viewBox = view === "world" ? enterpriseMap?.dataset.worldView : enterpriseMap?.dataset.chinaView;
+    if (enterpriseMap && viewBox) enterpriseMap.setAttribute("viewBox", viewBox);
+    document.querySelectorAll("[data-map-view]").forEach((item) => {
+      item.setAttribute("aria-pressed", String(item === button));
+    });
+  });
+});
+
 document.querySelector("#quote-form")?.addEventListener("submit", (event) => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
