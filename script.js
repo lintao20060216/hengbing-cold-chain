@@ -26,8 +26,8 @@ const networkStage = document.querySelector(".network-stage");
 document.querySelectorAll("[data-map-mode]").forEach((button) => {
   button.addEventListener("click", () => {
     const showGlobe = button.dataset.mapMode === "globe";
-    if (enterpriseMap) enterpriseMap.hidden = showGlobe;
-    if (globeMap) globeMap.hidden = !showGlobe;
+    if (enterpriseMap) enterpriseMap.toggleAttribute("hidden", showGlobe);
+    if (globeMap) globeMap.toggleAttribute("hidden", !showGlobe);
     networkStage?.classList.toggle("globe-mode-active", showGlobe);
     networkStage?.classList.toggle("map-mode-active", !showGlobe);
     document.querySelectorAll("[data-map-mode]").forEach((item) => {
