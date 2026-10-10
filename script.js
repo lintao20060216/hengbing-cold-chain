@@ -21,16 +21,25 @@ document.querySelectorAll("[data-product]").forEach((link) => {
 });
 
 const enterpriseMap = document.querySelector("#enterprise-map");
-document.querySelectorAll("[data-map-view]").forEach((button) => {
+const globeMap = document.querySelector("#globe-map");
+const networkStage = document.querySelector(".network-stage");
+document.querySelectorAll("[data-map-mode]").forEach((button) => {
   button.addEventListener("click", () => {
-    const view = button.dataset.mapView;
-    const viewBox = view === "world" ? enterpriseMap?.dataset.worldView : enterpriseMap?.dataset.chinaView;
-    if (enterpriseMap && viewBox) enterpriseMap.setAttribute("viewBox", viewBox);
-    document.querySelectorAll("[data-map-view]").forEach((item) => {
+    const showGlobe = button.dataset.mapMode === "globe";
+    if (enterpriseMap) enterpriseMap.hidden = showGlobe;
+    if (globeMap) globeMap.hidden = !showGlobe;
+    networkStage?.classList.toggle("globe-mode-active", showGlobe);
+    networkStage?.classList.toggle("map-mode-active", !showGlobe);
+    document.querySelectorAll("[data-map-mode]").forEach((item) => {
       item.setAttribute("aria-pressed", String(item === button));
     });
   });
 });
+
+document.querySelectorAll("[data-globe-zoom]").forEach((button) => {
+  button.addEventListener("click", () => window.hengbingGlobe?.zoom(Number(button.dataset.globeZoom)));
+});
+document.querySelector("[data-globe-reset]")?.addEventListener("click", () => window.hengbingGlobe?.focusChina());
 
 document.querySelector("#quote-form")?.addEventListener("submit", (event) => {
   event.preventDefault();
